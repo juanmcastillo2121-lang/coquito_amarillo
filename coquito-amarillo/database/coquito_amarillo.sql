@@ -1,0 +1,36 @@
+SET NAMES utf8mb4;
+CREATE DATABASE IF NOT EXISTS coquito_amarillo CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE coquito_amarillo;
+
+CREATE TABLE IF NOT EXISTS categorias (id INT AUTO_INCREMENT PRIMARY KEY, nombre VARCHAR(80) NOT NULL UNIQUE) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS productos (id INT AUTO_INCREMENT PRIMARY KEY, sku VARCHAR(30) NOT NULL UNIQUE, nombre VARCHAR(160) NOT NULL, peso VARCHAR(60) NOT NULL, precio DECIMAL(12,2) NOT NULL, stock INT NOT NULL DEFAULT 0, categoria_id INT NULL, categoria VARCHAR(80) NOT NULL, etiqueta VARCHAR(80), descripcion TEXT, imagen VARCHAR(500), activo TINYINT(1) NOT NULL DEFAULT 1, creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP, CONSTRAINT fk_producto_categoria FOREIGN KEY(categoria_id) REFERENCES categorias(id)) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS clientes (id INT AUTO_INCREMENT PRIMARY KEY, nombre VARCHAR(160) NOT NULL, correo VARCHAR(190) NOT NULL UNIQUE, ciudad VARCHAR(100) NOT NULL, direccion VARCHAR(255) NOT NULL, creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS pedidos (id BIGINT AUTO_INCREMENT PRIMARY KEY, codigo VARCHAR(30) NOT NULL UNIQUE, cliente_id INT NOT NULL, subtotal DECIMAL(12,2) NOT NULL, envio DECIMAL(12,2) NOT NULL, total DECIMAL(12,2) NOT NULL, metodo_pago ENUM('Tarjeta','PSE','Nequi') NOT NULL, estado VARCHAR(50) NOT NULL, moneda CHAR(3) NOT NULL DEFAULT 'COP', tasa_cambio DECIMAL(14,6) NOT NULL DEFAULT 1, total_convertido DECIMAL(14,2) NOT NULL, creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP, CONSTRAINT fk_pedido_cliente FOREIGN KEY(cliente_id) REFERENCES clientes(id)) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS detalle_pedidos (id BIGINT AUTO_INCREMENT PRIMARY KEY, pedido_id BIGINT NOT NULL, producto_id INT NOT NULL, nombre_producto VARCHAR(160) NOT NULL, precio_unitario DECIMAL(12,2) NOT NULL, cantidad INT NOT NULL, total DECIMAL(12,2) NOT NULL, CONSTRAINT fk_detalle_pedido FOREIGN KEY(pedido_id) REFERENCES pedidos(id) ON DELETE CASCADE, CONSTRAINT fk_detalle_producto FOREIGN KEY(producto_id) REFERENCES productos(id)) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS pagos (id BIGINT AUTO_INCREMENT PRIMARY KEY, pedido_id BIGINT NOT NULL, metodo VARCHAR(30) NOT NULL, estado VARCHAR(50) NOT NULL, referencia VARCHAR(50) NOT NULL, creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP, CONSTRAINT fk_pago_pedido FOREIGN KEY(pedido_id) REFERENCES pedidos(id) ON DELETE CASCADE) ENGINE=InnoDB;
+
+INSERT IGNORE INTO categorias(nombre) VALUES ('Café'),('Despensa'),('Dulces');
+INSERT INTO productos(sku,nombre,peso,precio,stock,categoria,etiqueta,descripcion,imagen,categoria_id)
+ 
+ SELECT 'CAF-500','Café de origen Antioquia','500 g','38000','40','Café','Selección especial','Café colombiano de aroma intenso y notas equilibradas.','https://acdn-us.mitiendanube.com/stores/002/452/709/products/antioquia-1-3b181be8193da6ba6f17236613431824-1024-1024.webp', id FROM categorias WHERE nombre='Café' ON DUPLICATE KEY UPDATE nombre=VALUES(nombre),peso=VALUES(peso),precio=VALUES(precio),categoria=VALUES(categoria),etiqueta=VALUES(etiqueta),descripcion=VALUES(descripcion),imagen=VALUES(imagen);
+INSERT INTO productos(sku,nombre,peso,precio,stock,categoria,etiqueta,descripcion,imagen,categoria_id) 
+
+SELECT 'ARE-250','Arequipe artesanal','250 g','14500','35','Dulces','Favorito','Dulce de leche cremoso, perfecto para compartir.','https://acdn-us.mitiendanube.com/stores/002/452/709/products/antioquia-1-3b181be8193da6ba6f17236613431824-1024-1024.webp', id FROM categorias WHERE nombre='Dulces' ON DUPLICATE KEY UPDATE nombre=VALUES(nombre),peso=VALUES(peso),precio=VALUES(precio),categoria=VALUES(categoria),etiqueta=VALUES(etiqueta),descripcion=VALUES(descripcion),imagen=VALUES(imagen);
+INSERT INTO productos(sku,nombre,peso,precio,stock,categoria,etiqueta,descripcion,imagen,categoria_id) 
+
+SELECT 'COQ-12','Coquitos tradicionales','Caja x 12','18000','25','Dulces','Hecho en casa','Bocaditos de coco con sabor a tradición.','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJTjehs8LUjMy8f4cnvPhBzkfjup-7biNVQLIYc3OuJxyMpwys3jJZM6w&s=10', id FROM categorias WHERE nombre='Dulces' ON DUPLICATE KEY UPDATE nombre=VALUES(nombre),peso=VALUES(peso),precio=VALUES(precio),categoria=VALUES(categoria),etiqueta=VALUES(etiqueta),descripcion=VALUES(descripcion),imagen=VALUES(imagen);
+INSERT INTO productos(sku,nombre,peso,precio,stock,categoria,etiqueta,descripcion,imagen,categoria_id) 
+
+SELECT 'BOC-24','Bocadillo veleño','Caja x 24','16000','30','Dulces','Tradicional','Guayaba seleccionada en su presentación clásica.','https://recetinas.com/wp-content/uploads/2023/01/Mermelada-de-guayaba.jpg', id FROM categorias WHERE nombre='Dulces' ON DUPLICATE KEY UPDATE nombre=VALUES(nombre),peso=VALUES(peso),precio=VALUES(precio),categoria=VALUES(categoria),etiqueta=VALUES(etiqueta),descripcion=VALUES(descripcion),imagen=VALUES(imagen);
+INSERT INTO productos(sku,nombre,peso,precio,stock,categoria,etiqueta,descripcion,imagen,categoria_id)
+ 
+ SELECT 'CHO-250','Chocolate de mesa','250 g','12500','32','Despensa','De origen','Chocolate para preparar bebidas cálidas y reconfortantes.','https://museodelchocolate.com.co/wp-content/uploads/2024/11/pixelcut-export.png', id FROM categorias WHERE nombre='Despensa' ON DUPLICATE KEY UPDATE nombre=VALUES(nombre),peso=VALUES(peso),precio=VALUES(precio),categoria=VALUES(categoria),etiqueta=VALUES(etiqueta),descripcion=VALUES(descripcion),imagen=VALUES(imagen);
+INSERT INTO productos(sku,nombre,peso,precio,stock,categoria,etiqueta,descripcion,imagen,categoria_id) 
+
+SELECT 'PAN-1K','Panela natural','1 kg','9800','50','Despensa','Natural','Panela colombiana para endulzar tus momentos.','https://cdn.croper.com/images/vrw4te0ajehy2gwkmxf77/original.jpeg', id FROM categorias WHERE nombre='Despensa' ON DUPLICATE KEY UPDATE nombre=VALUES(nombre),peso=VALUES(peso),precio=VALUES(precio),categoria=VALUES(categoria),etiqueta=VALUES(etiqueta),descripcion=VALUES(descripcion),imagen=VALUES(imagen);
+INSERT INTO productos(sku,nombre,peso,precio,stock,categoria,etiqueta,descripcion,imagen,categoria_id) 
+
+SELECT 'CAF-250','Café molido especial','250 g','22000','28','Café','Tueste medio','Una taza aromática para comenzar bien el día.','https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=900&q=85', id FROM categorias WHERE nombre='Café' ON DUPLICATE KEY UPDATE nombre=VALUES(nombre),peso=VALUES(peso),precio=VALUES(precio),categoria=VALUES(categoria),etiqueta=VALUES(etiqueta),descripcion=VALUES(descripcion),imagen=VALUES(imagen);
+INSERT INTO productos(sku,nombre,peso,precio,stock,categoria,etiqueta,descripcion,imagen,categoria_id) 
+
+SELECT 'MIE-350','Miel de montaña','350 g','21000','18','Despensa','Natural','Miel de sabor suave para acompañar tus recetas.','https://mielatto.com/wp-content/uploads/2021/07/DSCF2377-1-scaled.webp', id FROM categorias WHERE nombre='Despensa' ON DUPLICATE KEY UPDATE nombre=VALUES(nombre),peso=VALUES(peso),precio=VALUES(precio),categoria=VALUES(categoria),etiqueta=VALUES(etiqueta),descripcion=VALUES(descripcion),imagen=VALUES(imagen);

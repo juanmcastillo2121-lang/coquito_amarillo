@@ -1,0 +1,90 @@
+[
+  {
+    "sku": "CAF-500",
+    "nombre": "Café de origen Antioquia",
+    "peso": "500 g",
+    "precio": 38000,
+    "stock": 40,
+    "categoria": "Café",
+    "etiqueta": "Selección especial",
+    "descripcion": "Café colombiano de aroma intenso y notas equilibradas.",
+    "imagen": "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=900&q=85"
+  },
+  {
+    "sku": "ARE-250",
+    "nombre": "Arequipe artesanal",
+    "peso": "250 g",
+    "precio": 14500,
+    "stock": 35,
+    "categoria": "Dulces",
+    "etiqueta": "Favorito",
+    "descripcion": "Dulce de leche cremoso, perfecto para compartir.",
+    "imagen": "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=85"
+  },
+  {
+    "sku": "COQ-12",
+    "nombre": "Coquitos tradicionales",
+    "peso": "Caja x 12",
+    "precio": 18000,
+    "stock": 25,
+    "categoria": "Dulces",
+    "etiqueta": "Hecho en casa",
+    "descripcion": "Bocaditos de coco con sabor a tradición.",
+    "imagen": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85"
+  },
+  {
+    "sku": "BOC-24",
+    "nombre": "Bocadillo veleño",
+    "peso": "Caja x 24",
+    "precio": 16000,
+    "stock": 30,
+    "categoria": "Dulces",
+    "etiqueta": "Tradicional",
+    "descripcion": "Guayaba seleccionada en su presentación clásica.",
+    "imagen": "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=85"
+  },
+  {
+    "sku": "CHO-250",
+    "nombre": "Chocolate de mesa",
+    "peso": "250 g",
+    "precio": 12500,
+    "stock": 32,
+    "categoria": "Despensa",
+    "etiqueta": "De origen",
+    "descripcion": "Chocolate para preparar bebidas cálidas y reconfortantes.",
+    "imagen": "https://images.unsplash.com/photo-1548907040-4d42a7e8f0a7?auto=format&fit=crop&w=900&q=85"
+  },
+  {
+    "sku": "PAN-1K",
+    "nombre": "Panela natural",
+    "peso": "1 kg",
+    "precio": 9800,
+    "stock": 50,
+    "categoria": "Despensa",
+    "etiqueta": "Natural",
+    "descripcion": "Panela colombiana para endulzar tus momentos.",
+    "imagen": "https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&fit=crop&w=900&q=85"
+  },
+  {
+    "sku": "CAF-250",
+    "nombre": "Café molido especial",
+    "peso": "250 g",
+    "precio": 22000,
+    "stock": 28,
+    "categoria": "Café",
+    "etiqueta": "Tueste medio",
+    "descripcion": "Una taza aromática para comenzar bien el día.",
+    "imagen": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=900&q=85"
+  },
+  {
+    "sku": "MIE-350",
+    "nombre": "Miel de montaña",
+    "peso": "350 g",
+    "precio": 21000,
+    "stock": 18,
+    "categoria": "Despensa",
+    "etiqueta": "Natural",
+    "descripcion": "Miel de sabor suave para acompañar tus recetas.",
+    "imagen": "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=900&q=85"
+  }
+]

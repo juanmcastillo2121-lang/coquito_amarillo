@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Coquito Amarillo: sabores tradicionales colombianos, directo a tu hogar.">
+  <title>Coquito Amarillo | Tienda colombiana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <div class="announcement">Envíos a toda Colombia · Envío gratis desde $250.000</div>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Coquito Amarillo, inicio">
+      <span class="brand-mark">C</span><span>coquito<span class="brand-accent">.</span><small> SABOR QUE NOS UNE</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="#catalogo">Tienda</a><a href="#historia">Nuestra esencia</a><a href="#footer">Contacto</a>
+    </nav>
+    <button class="cart-trigger" id="open-cart" aria-label="Abrir carrito">
+      <span class="bag-icon">▢</span><span>Mi bolsa</span><b id="cart-count">0</b>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">DESDE NUESTRA TIERRA, PARA TU MESA</span>
+        <h1>Lo nuestro sabe<br><em>a tradición.</em></h1>
+        <p>Una selección de sabores colombianos, elaborados con cariño y llevados hasta donde estés.</p>
+        <a class="button button-dark" href="#catalogo">Descubrir productos <span>↗</span></a>
+        <div class="hero-note"><span class="note-line"></span> Productos típicos · Origen colombiano</div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1300&q=85" alt="Café servido en una mesa cálida">
+        <div class="hero-stamp"><strong>100%</strong><span>ORGULLO<br>COLOMBIANO</span></div>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <div><span>✳</span><p><strong>Origen seleccionado</strong><small>Calidad de nuestra tierra</small></p></div>
+      <div><span>⌁</span><p><strong>Compra segura</strong><small>Datos protegidos</small></p></div>
+      <div><span>↗</span><p><strong>Envíos nacionales</strong><small>De Medellín a tu hogar</small></p></div>
+    </section>
+
+    <section class="catalog-section" id="catalogo">
+      <div class="section-heading">
+        <div><span class="eyebrow">HECHO PARA COMPARTIR</span><h2>El sabor de casa</h2></div>
+        <p>Pequeños placeres, grandes tradiciones.<br>Encuentra tu próximo favorito.</p>
+      </div>
+      <div class="filters" id="filters">
+        <button class="filter active" data-category="Todos">Todos</button>
+        <button class="filter" data-category="Café">Café</button>
+        <button class="filter" data-category="Dulces">Dulces</button>
+        <button class="filter" data-category="Despensa">Despensa</button>
+      </div>
+      <div class="product-grid" id="product-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="story" id="historia">
+      <div class="story-image"><img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=1100&q=85" alt="Preparación artesanal de café"></div>
+      <div class="story-copy"><span class="eyebrow">NUESTRA ESENCIA</span><h2>Una tierra.<br>Mil maneras de<br><em>sentirnos en casa.</em></h2><p>Coquito Amarillo reúne productos típicos colombianos para acercar los sabores de nuestra cultura a cada mesa. Seleccionamos con cuidado y llevamos cada pedido desde nuestra bodega en Medellín.</p><a href="#catalogo" class="text-link">Comprar productos <span>→</span></a></div>
+    </section>
+
+    <section class="newsletter">
+      <div><span class="eyebrow">UN PEDACITO DE COLOMBIA</span><h2>Los buenos sabores<br>merecen compartirse.</h2></div>
+      <p>Arma tu pedido, calcula el envío y recibe el total en pesos, dólares o euros.</p>
+      <a class="button button-light" href="#catalogo">Explorar tienda ↗</a>
+    </section>
+  </main>
+
+  <footer id="footer">
+    <a class="brand brand-footer" href="#"><span class="brand-mark">C</span><span>coquito<span class="brand-accent">.</span><small>SABOR QUE NOS UNE</small></span></a>
+    <p>Productos típicos colombianos<br>Medellín, Colombia</p>
+    <small>© 2026 Coquito Amarillo SAS · Prototipo académico</small>
+  </footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Carrito de compras" aria-hidden="true">
+    <div class="drawer-head"><div><span class="eyebrow">TU SELECCIÓN</span><h2>Mi bolsa <span id="drawer-count">(0)</span></h2></div><button class="icon-button" id="close-cart" aria-label="Cerrar">×</button></div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-bottom">
+      <div class="subtotal-row"><span>Subtotal</span><strong id="cart-subtotal">$ 0</strong></div>
+      <p class="muted">El costo de envío se calcula al continuar.</p>
+      <button class="button button-dark full" id="go-checkout">Continuar compra <span>→</span></button>
+    </div>
+  </aside>
+
+  <section class="checkout-modal" id="checkout-modal" aria-hidden="true" aria-label="Finalizar compra">
+    <div class="checkout-panel">
+      <div class="checkout-top"><div><span class="eyebrow">COQUITO AMARILLO</span><h2>Finalizar compra</h2></div><button class="icon-button" id="close-checkout" aria-label="Cerrar">×</button></div>
+      <div class="checkout-layout">
+        <form id="checkout-form" novalidate>
+          <section class="form-section">
+            <div class="step-title"><span>01</span><div><h3>Datos de entrega</h3><p>¿A quién enviamos este pedido?</p></div></div>
+            <div class="field-grid">
+              <label class="field full-field">Nombre completo<input id="customer-name" autocomplete="name" required minlength="3" placeholder="Tu nombre"></label>
+              <label class="field">Correo electrónico<input id="customer-email" type="email" autocomplete="email" required placeholder="nombre@correo.com"></label>
+              <label class="field">Ciudad de entrega<select id="customer-city" required><option value="">Selecciona tu ciudad</option><option value="Medellín">Medellín</option><option value="Bogotá">Bogotá</option><option value="Cali">Cali</option><option value="Barranquilla">Barranquilla</option><option value="Cartagena">Cartagena</option><option value="Bucaramanga">Bucaramanga</option></select></label>
+              <label class="field full-field">Dirección de entrega<input id="customer-address" required placeholder="Calle, carrera, número y complemento"></label>
+            </div>
+            <label class="consent"><input id="privacy-consent" type="checkbox" required><span>Autorizo el tratamiento de mis datos para gestionar este pedido. <a href="#privacy-note">Ver aviso</a>.</span></label>
+            <button type="button" class="text-link geo-button" id="use-location">◎ Usar mi ubicación actual</button>
+          </section>
+
+          <section class="form-section">
+            <div class="step-title"><span>02</span><div><h3>Entrega y moneda</h3><p>Calculamos el envío según el destino.</p></div></div>
+            <div class="field-grid">
+              <label class="field">Moneda de visualización<select id="currency"><option value="COP">Pesos colombianos (COP)</option><option value="USD">Dólares (USD)</option><option value="EUR">Euros (EUR)</option></select></label>
+              <div class="shipping-box full-field"><div><span>Estimación de envío</span><strong id="shipping-value">Pendiente</strong></div><small id="shipping-detail">Completa la ciudad para cotizar.</small><button type="button" id="quote-shipping" class="mini-button">Calcular envío</button></div>
+            </div>
+            <p class="api-status" id="api-status" role="status">Las tasas y el clima se consultan al confirmar el pedido.</p>
+          </section>
+
+          <section class="form-section">
+            <div class="step-title"><span>03</span><div><h3>Método de pago</h3><p>Selecciona cómo deseas pagar.</p></div></div>
+            <div class="payment-options">
+              <label class="payment-option"><input type="radio" name="payment" value="Tarjeta" checked><span class="payment-symbol">▤</span><span><strong>Tarjeta</strong><small>Crédito o débito · Simulación</small></span></label>
+              <label class="payment-option"><input type="radio" name="payment" value="PSE"><span class="payment-symbol">P</span><span><strong>PSE</strong><small>Transferencia bancaria · Simulación</small></span></label>
+              <label class="payment-option"><input type="radio" name="payment" value="Nequi"><span class="payment-symbol">N</span><span><strong>Nequi</strong><small>Billetera digital · Simulación</small></span></label>
+            </div>
+            <div id="payment-fields" class="payment-fields">
+              <label class="field">Número de tarjeta<input id="card-number" inputmode="numeric" autocomplete="cc-number" maxlength="19" placeholder="1234 5678 9012 3456"></label>
+              <div class="field-grid"><label class="field">Vencimiento<input id="card-expiry" autocomplete="cc-exp" placeholder="MM/AA" maxlength="5"></label><label class="field">CVV<input id="card-cvv" inputmode="numeric" autocomplete="cc-csc" maxlength="4" placeholder="123"></label></div>
+              <p class="security-note">Prototipo académico: los datos de tarjeta solo se validan en el navegador. Nunca se almacenan ni se envían.</p>
+            </div>
+          </section>
+          <button class="button button-dark full pay-button" type="submit" id="pay-button">Confirmar pedido <span>→</span></button>
+          <p class="privacy-note" id="privacy-note">Tus datos de contacto se usan únicamente para esta demostración. No ingreses información financiera real: los medios de pago son simulados y no realizan cobros.</p>
+          <p class="form-error" id="form-error" role="alert"></p>
+        </form>
+
+        <aside class="order-summary">
+          <span class="eyebrow">RESUMEN</span><h3>Tu pedido</h3>
+          <div id="checkout-items"></div>
+          <div class="summary-line"><span>Subtotal</span><strong id="summary-subtotal">$ 0</strong></div>
+          <div class="summary-line"><span>Envío</span><strong id="summary-shipping">Por calcular</strong></div>
+          <div class="summary-line total-line"><span>Total estimado</span><strong id="summary-total">$ 0</strong></div>
+          <p class="summary-foot">Los valores en moneda extranjera son aproximados y se actualizan con la tasa consultada.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <div class="receipt-modal" id="receipt-modal" aria-hidden="true">
+    <div class="receipt-card" id="receipt-content"></div>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
